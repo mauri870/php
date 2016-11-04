@@ -16,5 +16,10 @@ then
     sed -i "s/newrelic.appname = .*/newrelic.appname = \"$NEWRELIC_APPNAME\"/" /usr/local/etc/php/conf.d/newrelic.ini
 fi
 
+if [[ $XDEBUG_ENABLED == true ]]
+then
+    echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+fi
+
 /usr/sbin/crond
 supervisord --nodaemon --configuration /etc/supervisord.conf
