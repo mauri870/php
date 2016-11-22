@@ -11,9 +11,9 @@ sed -i "s/;date.timezone.*/date.timezone = $PHP_TIMEZONE/" /usr/local/etc/php/ph
 # Adding new relic info
 if [[ $NEWRELIC_ENABLED == true ]]
 then
-    echo "php_value[newrelic.enabled] = on" >> /usr/local/etc/php-fpm.d/www.conf
-    echo "php_value[newrelic.license] = \"$NEWRELIC_LICENSE\"" >> /usr/local/etc/php-fpm.d/www.conf
-    echo "php_value[newrelic.appname] = \"$NEWRELIC_APPNAME\"" >> /usr/local/etc/php-fpm.d/www.conf
+    sed -i "s/;newrelic.enabled = .*/newrelic.enabled = true/" /usr/local/etc/php/conf.d/newrelic.ini
+    sed -i "s/REPLACE_WITH_REAL_KEY/$NEWRELIC_LICENSE/" /usr/local/etc/php/conf.d/newrelic.ini
+    sed -i "s/newrelic.appname = .*/newrelic.appname = \"$NEWRELIC_APPNAME\"/" /usr/local/etc/php/conf.d/newrelic.ini
 fi
 
 if [[ $XDEBUG_ENABLED == true ]]
