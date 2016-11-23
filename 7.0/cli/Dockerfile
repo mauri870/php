@@ -29,9 +29,9 @@ php -r "unlink('composer-setup.php');"
 
 # Installing newrelic agent
 RUN echo " ---> Installing New Relic Agent" && \
-wget --quiet https://download.newrelic.com/php_agent/release/newrelic-php5-6.7.0.174-linux-musl.tar.gz -O /build/newrelic.tar.gz && \
+wget --quiet https://download.newrelic.com/php_agent/release/newrelic-php5-6.8.0.177-linux-musl.tar.gz -O /build/newrelic.tar.gz && \
 mkdir /newrelic && tar -zxvf /build/newrelic.tar.gz -C /newrelic/ && \
-/newrelic/newrelic-php5-6.7.0.174-linux-musl/newrelic-install install
+/newrelic/newrelic-php5-6.8.0.177-linux-musl/newrelic-install install
 
 # Installing supervisord
 RUN echo " ---> Installing Supervisor" && \
