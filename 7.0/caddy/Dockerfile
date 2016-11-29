@@ -21,8 +21,6 @@ cp /build/Caddyfile /root
 RUN echo " ---> Cleaning up" && \
 rm -rf /build
 
-VOLUME /var/www/html
-
 EXPOSE 8080
 
 ENTRYPOINT ["/sbin/tini", "--", "/php-entrypoint.sh"]

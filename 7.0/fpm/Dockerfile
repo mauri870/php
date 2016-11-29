@@ -50,6 +50,4 @@ RUN echo " ---> Cleaning up" && \
 apk del .build-deps && \
 rm -rf /build
 
-VOLUME /var/www/html
-
 ENTRYPOINT ["/sbin/tini", "--", "/php-entrypoint.sh"]
