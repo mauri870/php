@@ -21,5 +21,20 @@ then
     echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 fi
 
+if [[ $RESET_DATABASE == true ]]
+then
+    php artisan migrate:reset
+fi
+
+if [[ $MIGRATE_DATABASE == true ]]
+then
+    php artisan migrate
+fi
+
+if [[ $SEED_DATABASE == true ]]
+then
+    php artisan db:seed
+fi
+
 /usr/sbin/crond
 supervisord --nodaemon --configuration /etc/supervisord.conf
