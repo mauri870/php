@@ -23,4 +23,6 @@ rm -rf /build
 
 EXPOSE 8080
 
+WORKDIR /var/www/html
+
 ENTRYPOINT ["/sbin/tini", "--", "/php-entrypoint.sh"]
