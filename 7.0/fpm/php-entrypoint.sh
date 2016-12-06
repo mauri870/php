@@ -23,17 +23,17 @@ fi
 
 if [[ $RESET_DATABASE == true ]]
 then
-    php artisan migrate:reset
+    php artisan migrate:reset --force
 fi
 
 if [[ $MIGRATE_DATABASE == true ]]
 then
-    php artisan migrate
+    php artisan migrate --force
 fi
 
 if [[ $SEED_DATABASE == true ]]
 then
-    php artisan db:seed
+    php artisan db:seed --force
 fi
 
 php-fpm --nodaemonize --allow-to-run-as-root

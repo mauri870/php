@@ -21,19 +21,19 @@ then
     echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 fi
 
-if [[ $RESET_DATABASE == true ]]
+if [[ $RESET_DATABASE ==    true ]]
 then
-    php artisan migrate:reset
+    php artisan migrate:reset --force
 fi
 
 if [[ $MIGRATE_DATABASE == true ]]
 then
-    php artisan migrate
+    php artisan migrate --force
 fi
 
 if [[ $SEED_DATABASE == true ]]
 then
-    php artisan db:seed
+    php artisan db:seed --force
 fi
 
 /usr/sbin/crond
