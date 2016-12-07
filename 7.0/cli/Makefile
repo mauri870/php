@@ -1,4 +1,4 @@
-BUILD_NAME := 'local/php-cli'
+BUILD_NAME := 'local/php-7.0-cli'
 
 # bins
 DOCKER := $(shell which docker)

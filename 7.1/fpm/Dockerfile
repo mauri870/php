@@ -1,4 +1,4 @@
-FROM php:7.0-fpm-alpine
+FROM php:7.1-fpm-alpine
 MAINTAINER FluxoTI <lucas.gois@fluxoti.com>
 
 COPY . /build

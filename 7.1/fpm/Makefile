@@ -1,4 +1,4 @@
-BUILD_NAME := 'local/php-7.0-caddy'
+BUILD_NAME := 'local/php-7.1-fpm'
 
 # bins
 DOCKER := $(shell which docker)
