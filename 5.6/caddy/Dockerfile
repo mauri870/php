@@ -1,4 +1,4 @@
-FROM local/php-5.6-fpm
+FROM fluxoti/php:5.6-fpm
 MAINTAINER FluxoTI <lucas.gois@fluxoti.com>
 
 COPY . /build
