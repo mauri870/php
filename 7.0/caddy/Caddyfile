@@ -7,4 +7,5 @@
   rewrite {
     to {path} {path}/ /index.php?{query}
   }
+  gzip
 }
