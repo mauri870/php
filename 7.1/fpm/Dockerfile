@@ -22,7 +22,7 @@ apk add --no-cache --virtual .build-deps zlib-dev openssl-dev $PHPIZE_DEPS wget 
 
 # Installing PHP extensions
 RUN echo " ---> Installing PHP" && \
-apk update && apk add bash tini postgresql-dev && docker-php-ext-install pdo_pgsql && \
+apk update && apk add bash tini postgresql-dev git && docker-php-ext-install pdo_pgsql && \
 docker-php-ext-install pdo_mysql && docker-php-ext-install mbstring json && \
 pecl install mongodb zip xdebug && docker-php-ext-enable mongodb
 
