@@ -18,8 +18,8 @@ apk add --no-cache --virtual .build-deps zlib-dev openssl-dev $PHPIZE_DEPS wget
 # Installing PHP extensions
 RUN echo " ---> Installing PHP" && \
 apk update && apk add bash tini git postgresql-dev && docker-php-ext-install pdo_pgsql && docker-php-ext-install pdo_mysql && \
-docker-php-ext-install mbstring json && \
-pecl install mongodb zip xdebug && docker-php-ext-enable mongodb
+docker-php-ext-install mbstring json zip && \
+pecl install mongodb xdebug && docker-php-ext-enable mongodb
 
 # Installing composer
 RUN echo " ---> Installing Composer" && \
