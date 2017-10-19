@@ -2,18 +2,15 @@ language: bash
 services: docker
 
 env:
-  - VERSION=5.6 VARIANT=fpm
-  - VERSION=5.6 VARIANT=cli
-  - VERSION=5.6 VARIANT=caddy
-  - VERSION=7.0 VARIANT=fpm
-  - VERSION=7.0 VARIANT=cli
-  - VERSION=7.0 VARIANT=caddy
+#  - VERSION=5.6 VARIANT=fpm
+#  - VERSION=5.6 VARIANT=cli
+#  - VERSION=5.6 VARIANT=caddy
+#  - VERSION=7.0 VARIANT=fpm
+#  - VERSION=7.0 VARIANT=cli
+#  - VERSION=7.0 VARIANT=caddy
   - VERSION=7.1 VARIANT=fpm
   - VERSION=7.1 VARIANT=cli
   - VERSION=7.1 VARIANT=caddy
-
-install:
-  - git clone https://github.com/docker-library/official-images.git ~/official-images
 
 before_script:
   - env | sort
@@ -22,7 +19,6 @@ before_script:
 
 script:
   - travis_retry docker build -t "$image" .
-  - ~/official-images/test/run.sh "$image"
 
 after_script:
   - docker images

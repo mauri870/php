@@ -5,7 +5,7 @@ COPY . /build
 
 ENV PHP_ERROR_REPORTING=E_ALL PHP_DISPLAY_ERRORS=On PHP_MEMORY_LIMIT=512M PHP_TIMEZONE=UTC \
 PHP_UPLOAD_MAX_FILESIZE=100M PHP_POST_MAX_SIZE=100M NR_INSTALL_SILENT=true \
-TINI_VERSION=v0.11.0 XDEBUG_ENABLED=false NEWRELIC_CLIENT=newrelic-php5-7.2.0.191-linux-musl
+TINI_VERSION=v0.11.0 XDEBUG_ENABLED=false NEWRELIC_CLIENT=newrelic-php5-7.6.0.201-linux-musl TERM=screen-256color
 
 # Copying our config
 RUN echo " ---> Preparing environment" && \
@@ -13,13 +13,13 @@ cp /build/php.ini /usr/local/etc/php && \
 cp /build/entrypoint.sh / && chmod +x /entrypoint.sh && \
 
 # Instaling build dependencies
-apk add --no-cache --virtual .build-deps zlib-dev openssl-dev $PHPIZE_DEPS wget
+apk add --no-cache --virtual .build-deps zlib-dev openssl-dev $PHPIZE_DEPS wget && \
+apk add -U --repository http://dl-4.alpinelinux.org/alpine/v3.5/community --virtual libzip
 
 # Installing PHP extensions
 RUN echo " ---> Installing PHP" && \
-apk update && apk add bash tini postgresql-dev git && docker-php-ext-install pdo_pgsql && docker-php-ext-install pdo_mysql && \
-docker-php-ext-install mbstring json && \
-pecl install mongodb zip xdebug && docker-php-ext-enable mongodb
+apk add bash tini postgresql-dev git && docker-php-ext-install pdo_pgsql pdo_mysql zip mbstring json && \
+pecl install mongodb xdebug && docker-php-ext-enable mongodb
 
 # Installing composer
 RUN echo " ---> Installing Composer" && \
@@ -29,9 +29,11 @@ php -r "unlink('composer-setup.php');"
 
 # Installing newrelic agent
 RUN echo " ---> Installing New Relic Agent" && \
-wget --quiet https://download.newrelic.com/php_agent/release/$NEWRELIC_CLIENT.tar.gz -O /build/newrelic.tar.gz && \
-mkdir /newrelic && tar -zxvf /build/newrelic.tar.gz -C /newrelic/ && \
-/newrelic/$NEWRELIC_CLIENT/newrelic-install install
+wget -q https://download.newrelic.com/php_agent/release/$NEWRELIC_CLIENT.tar.gz -O /build/newrelic.tar.gz && \
+mkdir /newrelic && tar -zxvf /build/newrelic.tar.gz -C /newrelic && \
+cd /newrelic/$NEWRELIC_CLIENT && \
+sed -i 's/ostype=debian/ostype=alpine/' newrelic-install && \
+./newrelic-install install
 
 # Installing supervisord
 RUN echo " ---> Installing Supervisor" && \
