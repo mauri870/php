@@ -2,23 +2,15 @@ language: bash
 services: docker
 
 env:
-#  - VERSION=5.6 VARIANT=fpm
-#  - VERSION=5.6 VARIANT=cli
-#  - VERSION=5.6 VARIANT=caddy
-#  - VERSION=7.0 VARIANT=fpm
-#  - VERSION=7.0 VARIANT=cli
-#  - VERSION=7.0 VARIANT=caddy
-  - VERSION=7.1 VARIANT=fpm
   - VERSION=7.1 VARIANT=cli
-  - VERSION=7.1 VARIANT=caddy
+  - VERSION=7.1 VARIANT=web
 
 before_script:
   - env | sort
-  - cd "$VERSION/$VARIANT"
-  - image="fluxoti/php:${VERSION}-${VARIANT}"
 
 script:
-  - travis_retry docker build -t "$image" .
+  - export BUILD_BASE=fluxoti/php
+  - travis_retry make
 
 after_script:
   - docker images
