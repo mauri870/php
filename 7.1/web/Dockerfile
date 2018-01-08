@@ -3,7 +3,7 @@ LABEL maintainer="mauri.nunes@fluxoti.com"
 
 USER root
 
-RUN apk add nodejs yarn
+RUN apk add nodejs yarn nodejs-npm
 
 USER ambientum
 
