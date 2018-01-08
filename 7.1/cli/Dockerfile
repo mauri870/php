@@ -18,6 +18,10 @@ RUN echo " ---> Installing Supervisor" && \
 
 RUN chmod +x /scripts/entrypoint.sh
 
+RUN apk add vim
+
+ENV TERM=screen-256color
+
 USER ambientum
 
 WORKDIR /var/www/app
