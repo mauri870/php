@@ -18,7 +18,7 @@ RUN sed -i -e "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php7/php.ini
 
 RUN chmod +x /scripts/entrypoint.sh
 
-RUN apk add vim busybox-suid
+RUN apk add vim busybox-suid php7-sockets@php
 
 ENV TERM=screen-256color
 
