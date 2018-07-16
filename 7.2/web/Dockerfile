@@ -11,8 +11,6 @@ RUN apk add -u nodejs yarn nodejs-npm
 
 RUN apk add php7-pdo_sqlite@php php7-sockets@php
 
-RUN sed -i -e "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php7/php.ini
-
 USER ambientum
 
 CMD ["/home/ambientum/start.sh"]

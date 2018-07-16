@@ -14,8 +14,6 @@ RUN echo " ---> Installing Supervisor" && \
     echo "[include]" >> /etc/supervisord.conf && \
     echo "files = /etc/supervisord/conf/*.conf" >> /etc/supervisord.conf
 
-RUN sed -i -e "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php7/php.ini
-
 RUN chmod +x /scripts/entrypoint.sh
 
 RUN apk add vim busybox-suid php7-sockets@php
