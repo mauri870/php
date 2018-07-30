@@ -7,7 +7,7 @@ USER root
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apk add -u nodejs yarn nodejs-npm
+RUN apk update && apk add nodejs yarn nodejs-npm
 
 RUN sed -i -e "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php7/php.ini
 

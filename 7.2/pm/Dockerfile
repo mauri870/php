@@ -1,4 +1,4 @@
-FROM ambientum/php:7.2-nginx
+FROM ambientum/php:7.2-php-pm
 LABEL maintainer="mauri.nunes@fluxoti.com"
 
 ENV TERM=screen-256color
@@ -6,10 +6,11 @@ ENV TERM=screen-256color
 USER root
 
 COPY nginx.conf /etc/nginx/
+COPY default.conf /etc/nginx/sites-enabled/
 COPY entrypoint.sh /home/ambientum/
 
 RUN apk update && \
-    apk add -u nodejs yarn nodejs-npm php7-pdo_sqlite@php php7-sockets@php
+    apk add --no-cache nginx nodejs yarn nodejs-npm php7-pdo_sqlite@php php7-sockets@php
 
 USER ambientum
 

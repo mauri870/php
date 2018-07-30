@@ -6,6 +6,7 @@ env:
   - VERSION=7.1 VARIANT=web
   - VERSION=7.2 VARIANT=cli
   - VERSION=7.2 VARIANT=web
+  - VERSION=7.2 VARIANT=pm
 
 before_script:
   - env | sort
