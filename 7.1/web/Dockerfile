@@ -7,7 +7,7 @@ USER root
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apk add -u nodejs yarn nodejs-npm
+RUN apk update && apk add nodejs yarn nodejs-npm
 
 USER ambientum
 
