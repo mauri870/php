@@ -10,7 +10,7 @@ COPY default.conf /etc/nginx/sites-enabled/
 COPY entrypoint.sh /home/ambientum/
 
 RUN apk update && \
-    apk add --no-cache nginx nodejs yarn nodejs-npm php7-pdo_sqlite@php php7-sockets@php
+    apk add --no-cache nginx nodejs yarn nodejs-npm php-sockets
 
 USER ambientum
 
