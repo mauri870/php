@@ -9,7 +9,7 @@ COPY nginx.conf /etc/nginx/
 COPY entrypoint.sh /home/ambientum/
 
 RUN apk update && \
-    apk add -u nodejs yarn nodejs-npm php7-pdo_sqlite@php php7-sockets@php
+    apk add -u nodejs yarn nodejs-npm php-sockets
 
 USER ambientum
 

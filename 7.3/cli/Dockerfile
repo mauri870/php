@@ -16,7 +16,7 @@ RUN echo " ---> Installing Supervisor" && \
 
 RUN chmod +x /scripts/entrypoint.sh
 
-RUN apk add vim busybox-suid php7-sockets@php
+RUN apk add vim busybox-suid php-sockets
 
 ENV TERM=screen-256color
 
