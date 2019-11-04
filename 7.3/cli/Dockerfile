@@ -16,7 +16,11 @@ RUN echo " ---> Installing Supervisor" && \
 
 RUN chmod +x /scripts/entrypoint.sh
 
-RUN apk add vim busybox-suid php-sockets
+RUN apk update && apk upgrade && \
+    apk add vim busybox-suid php-sockets && \
+    # Fix timezones
+    apk add php7-pear php7-dev autoconf g++ && \
+    sudo pecl install timezonedb
 
 ENV TERM=screen-256color
 

@@ -8,8 +8,11 @@ USER root
 COPY nginx.conf /etc/nginx/
 COPY entrypoint.sh /home/ambientum/
 
-RUN apk update && \
-    apk add -u nodejs yarn nodejs-npm php-sockets
+RUN apk update && apk upgrade && \
+    apk add -u nodejs yarn nodejs-npm && \
+    # Fix timezones
+    apk add php7-pear php7-dev autoconf g++ && \
+    sudo pecl install timezonedb
 
 USER ambientum
 
