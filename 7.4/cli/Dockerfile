@@ -9,7 +9,7 @@ COPY entrypoint.sh /scripts/entrypoint.sh
 # TODO: Remove this after update image
 RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
     apk update && apk upgrade && \
-    apk add vim busybox-suid php-sockets php7-pear php7-dev autoconf g++ && \
+    apk add vim busybox-suid php-sockets php7-pear php7-dev autoconf g++ pcre2-dev && \
     # Install supervisord
     echo " ---> Installing Supervisor" && \
     mkdir -p /etc/supervisord/conf && \
@@ -22,7 +22,7 @@ RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
 # Install custom extensions
 RUN pecl channel-update pecl.php.net && \
     pear config-set php_ini /etc/php7/php.ini && \
-    pecl install timezonedb hrtime
+    pecl install timezonedb hrtime grpc protobuf
 
 
 ENV TERM=screen-256color
