@@ -9,7 +9,7 @@ COPY entrypoint.sh /scripts/entrypoint.sh
 # TODO: Remove this after update image
 RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
     apk update && apk upgrade && \
-    apk add vim busybox-suid php-sockets php7-pear php7-dev autoconf g++ pcre2-dev && \
+    apk add vim busybox-suid linux-headers php-sockets php7-pear php7-dev autoconf g++ pcre2-dev && \
     # Install supervisord
     echo " ---> Installing Supervisor" && \
     mkdir -p /etc/supervisord/conf && \
