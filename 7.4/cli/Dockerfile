@@ -1,11 +1,14 @@
-FROM ambientum/php:7.4
+# TODO: Updgrade this image to 7.4
+FROM ambientum/php:7.3
 LABEL maintainer="mauri.nunes@fluxoti.com"
 
 USER root
 
 COPY entrypoint.sh /scripts/entrypoint.sh
 
-RUN apk update && apk upgrade && \
+# TODO: Remove this after update image
+RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
+    apk update && apk upgrade && \
     apk add vim busybox-suid linux-headers php-sockets php7-pear php7-dev autoconf g++ pcre2-dev && \
     # Install supervisord
     echo " ---> Installing Supervisor" && \
