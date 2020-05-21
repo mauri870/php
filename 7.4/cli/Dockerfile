@@ -1,14 +1,11 @@
-# TODO: Updgrade this image to 7.4
-FROM ambientum/php:7.3
+FROM ambientum/php:7.4
 LABEL maintainer="mauri.nunes@fluxoti.com"
 
 USER root
 
 COPY entrypoint.sh /scripts/entrypoint.sh
 
-# TODO: Remove this after update image
-RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
-    apk update && apk upgrade && \
+RUN apk update && apk upgrade && \
     apk add vim busybox-suid linux-headers php-sockets php7-pear php7-dev autoconf g++ pcre2-dev && \
     # Install supervisord
     echo " ---> Installing Supervisor" && \
@@ -22,7 +19,7 @@ RUN sudo sed -i 's/php-7.3/php-7.4/g' /etc/apk/repositories && \
 # Install custom extensions
 RUN pecl channel-update pecl.php.net && \
     pear config-set php_ini /etc/php7/php.ini && \
-    pecl install timezonedb hrtime grpc protobuf
+    pecl install timezonedb hrtime 
 
 
 ENV TERM=screen-256color
