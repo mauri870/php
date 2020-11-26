@@ -82,6 +82,8 @@ RUN apk add --update \
     php8-gettext \
     php8-cgi \
     php8-tokenizer \
+    php8-xmlwriter \
+    php8-simplexml \
     php8-phpdbg && \
     sudo ln -s /usr/bin/php8 /usr/bin/php && \
     sudo ln -s /usr/bin/php-cgi8 /usr/bin/php-cgi && \
