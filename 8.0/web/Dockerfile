@@ -1,4 +1,4 @@
-FROM fluxoti/php:8.0-cli
+FROM fluxoti/php:8.0
 LABEL maintainer="mauri.nunes@fluxoti.com" 
 
 USER root
