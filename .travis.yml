@@ -2,12 +2,10 @@ language: bash
 services: docker
 
 env:
-  - VERSION=7.3 VARIANT=cli
-  - VERSION=7.3 VARIANT=web
-  - VERSION=7.3 VARIANT=rr
   - VERSION=7.4 VARIANT=cli
   - VERSION=7.4 VARIANT=web
-
+  - VERSION=8.0 VARIANT=web
+  - VERSION=8.0 VARIANT=cli
 
 before_script:
   - env | sort

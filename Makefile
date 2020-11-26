@@ -15,4 +15,4 @@ build:
 	$(DOCKER) build --no-cache -t $(BUILD_NAME) $(BUILD_DIR)
 
 clean:
-	$(DOCKER) rmi $(BUILD_NAME)
+	$(DOCKER) rmi $(BUILD_NAME) -f
