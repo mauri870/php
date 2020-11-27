@@ -50,6 +50,7 @@ RUN apk add --update \
     php8-ctype \
     php8-exif \
     php8-fpm \
+    php8-fileinfo \
     php8-gd \
     php8-gmp \
     php8-iconv \
